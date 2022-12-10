@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 
 test.txt
+data.json
+del.py
