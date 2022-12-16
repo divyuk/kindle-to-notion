@@ -127,11 +127,9 @@ def get_blockid(page_id):
     data = json.loads(response.text)
     block_id = ""
     for d in data["results"]:
-        try:
-            block_id = d['id'] if d['heading_3']['rich_text'][0]['text']['content'] == "Book highlights and Notes" else ""
-        except KeyError:    
-            pass
+        block_id = d['id'] if 'heading_3' in d and d['heading_3']['rich_text'][0]['text']['content'] == "Book highlights and Notes" else ""
     return block_id
+
 
 def put_data(block_id,paragraph_list):
     url = f"https://api.notion.com/v1/blocks/{block_id}/children"
